@@ -1,10 +1,12 @@
+import { BoardRepository } from "../domain/repositories/board-repository";
+
 export class BoardService {
 
-    constructor() {
-
+    constructor(protected readonly boardRepository: BoardRepository) {
     }
 
-    getBoards() {
-
+    async getBoards() {
+        const boards = await this.boardRepository.getAll();
+        return boards;
     }
 }

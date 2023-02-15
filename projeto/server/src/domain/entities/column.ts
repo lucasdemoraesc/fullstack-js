@@ -13,11 +13,19 @@ export class Column {
         this._cards = [];
     }
 
+    public get cards(): readonly Card[] {
+        return this._cards;
+    }
+
     public addCard(card: Card) {
         this._cards.push(card);
     }
 
-    public calculateEstimate() {
-        return this._cards.reduce((partialSum, x) => partialSum + x.estimative, 0);
+    public addCards(cards: Card[]) {
+        this._cards.push(...cards);
+    }
+
+    public get estimative() {
+        return this._cards.reduce((total, card) => total += card.estimative, 0);
     }
 }

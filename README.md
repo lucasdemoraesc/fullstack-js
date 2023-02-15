@@ -1,4 +1,3 @@
-
 # :green_heart:	FullStackJS com TypeScript, Node e Vue.js
 
 Projeto desenvolvido no curso FullStackJS do [Rodrigo Branas](https://branas.io).

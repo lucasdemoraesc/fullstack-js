@@ -1,7 +1,7 @@
 import axios from "axios";
-import { Board } from "../../src/entities/board";
-import { Card } from "../../src/entities/card";
-import { Column } from "../../src/entities/column";
+import { Board } from "../../src/domain/entities/board";
+import { Card } from "../../src/domain/entities/card";
+import { Column } from "../../src/domain/entities/column";
 
 test("Deve retornar os quadros por meio da API", async () => {
     const response = await axios<Board[]>({
