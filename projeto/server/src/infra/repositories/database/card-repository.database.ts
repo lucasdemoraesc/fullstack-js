@@ -1,6 +1,6 @@
-import { Card } from "../../domain/entities/card";
-import { CardRepository } from "../../domain/repositories/card-repository";
-import { Connection } from "../database/connection";
+import { Card } from "../../../domain/entities/card";
+import { CardRepository } from "../../../domain/repositories/card-repository";
+import { Connection } from "../../database/connection";
 
 export class CardRepositoryDatabase implements CardRepository {
 

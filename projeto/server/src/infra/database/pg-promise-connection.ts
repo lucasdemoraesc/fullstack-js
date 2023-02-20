@@ -14,6 +14,6 @@ export class PgPromiseConnection implements Connection {
     }
 
     close(): Promise<void> {
-        return this.connection.$poll.end();
+        return this.connection.$pool.end();
     }
 }

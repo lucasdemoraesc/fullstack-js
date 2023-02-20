@@ -1,6 +1,6 @@
-import { Column } from "../../domain/entities/column";
-import { ColumnRepository } from "../../domain/repositories/column-repository";
-import { Connection } from "../database/connection";
+import { Column } from "../../../domain/entities/column";
+import { ColumnRepository } from "../../../domain/repositories/column-repository";
+import { Connection } from "../../database/connection";
 
 export class ColumnRepositoryDatabase implements ColumnRepository {
 
@@ -11,7 +11,7 @@ export class ColumnRepositoryDatabase implements ColumnRepository {
         const columns: Column[] = [];
 
         for (const columnData of columnsData)
-            columns.push(new Column(columnData.name, columnData.has_estimative));
+            columns.push(new Column(columnData.id_column, columnData.name, columnData.has_estimative));
 
         return columns;
     }

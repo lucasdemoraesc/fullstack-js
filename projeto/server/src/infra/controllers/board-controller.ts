@@ -1,21 +1,25 @@
+import { BoardRepository } from "../../domain/repositories/board-repository";
+import { CardRepository } from "../../domain/repositories/card-repository";
+import { ColumnRepository } from "../../domain/repositories/column-repository";
 import { BoardService } from "../../services/board-service";
 import { CardService } from "../../services/card-service";
 import { ColumnService } from "../../services/column-service";
 import { Connection } from "../database/connection";
 import { Http } from "../http/Http";
-import { BoardRepositoryDatabase } from "../repositories/board-repository.database";
-import { CardRepositoryDatabase } from "../repositories/card-repository.database";
-import { ColumnRepositoryDatabase } from "../repositories/column-repository.database";
+import { CardRepositoryDatabase } from "../repositories/database/card-repository.database";
+import { ColumnRepositoryDatabase } from "../repositories/database/column-repository.database";
 
 export class BoardController {
 
     constructor(
         private readonly http: Http,
-        private readonly connection: Connection
+        private readonly connection: Connection,
+        private readonly boardRepository: BoardRepository,
+        private readonly columnRepository: ColumnRepository,
+        private readonly cardRepository: CardRepository
     ) {
         http.route("get", "/boards", async (params: any, body: any) => {
-            const repository = new BoardRepositoryDatabase(connection);
-            const boardService = new BoardService(repository);
+            const boardService = new BoardService(boardRepository, columnRepository, cardRepository);
             const boards = await boardService.getBoards();
             return boards;
         });
