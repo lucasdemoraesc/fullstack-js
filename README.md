@@ -29,11 +29,14 @@ GET /boards/id/columns/id/cards # retorna os cartões da coluna
 ### Parte :three:
 
 O escopo dessa etapa é:
-- [ ] 1. Calcular a estimativa total do quadro
-- [ ] 2. Calcular a estimativa total por coluna
+- [x] 1. Calcular a estimativa total do quadro
+- [x] 2. Calcular a estimativa total por coluna
 - [ ] 3. Mover um card de coluna
 - [ ] 4. Ordenar as colunas
 - [ ] 5. Ordenar os cards
+- [ ] 6. Salvar um quadro
+- [ ] 7. Salvar uma coluna
+- [ ] 8. Salvar um card
 
 Considerações: Implementar a API e o banco de dados
 
