@@ -39,7 +39,8 @@ export class BoardService {
             const cards = await this.cardRepository.getAllByIdColumn(column.idColumn);
 
             for (const card of cards) {
-                columnOutput.estimative += card.estimative;
+                if (column.hasEstimative)
+                    columnOutput.estimative += card.estimative;
                 columnOutput.cards.push({ title: card.title, estimative: card.estimative });
             }
 
