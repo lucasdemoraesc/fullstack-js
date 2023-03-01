@@ -2,6 +2,8 @@ drop table if exists fullstackjs.cards;
 drop table if exists fullstackjs.columns;
 drop table if exists fullstackjs.boards;
 
+create schema if not exists fullstackjs;
+
 create table fullstackjs.boards (
     id_board serial primary key,
     name varchar(30) not null,

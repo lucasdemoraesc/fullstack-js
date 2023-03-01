@@ -1,26 +1,32 @@
 <template>
   <h2>{{ board.name }} ({{ boardEstimative }})</h2>
   <div class="columns">
-    <div class="column" v-for="column in board.columns">
+    <div class="column"
+      v-for="column in board.columns">
       <div class="header">
         <h3>{{ column.name }} ({{ column.estimative }})</h3>
         <span class="badge">{{ column.cards.length }}</span>
       </div>
 
-      <div class="card" v-for="card in column.cards">
+      <div class="card"
+        v-for="card in column.cards">
         {{ card.title }} ({{ card.estimative }})
         <button @click="increaseEstimative(card)">+</button>
         <button @click="decreaseEstimative(card)">-</button>
       </div>
       <div class="card new-card">
-        <input type="text" name="card-title" v-model.trim="cardTitle">
+        <input type="text"
+          name="card-title"
+          v-model.trim="cardTitle">
         <button @click="addCard(column, cardTitle)">Add</button>
       </div>
 
     </div>
     <div class=" column new-column">
       {{ columnName }}
-      <input type="text" name="column-name" v-model.trim="columnName">
+      <input type="text"
+        name="column-name"
+        v-model.trim="columnName">
       <button @click="addColumn()">Add</button>
     </div>
   </div>
