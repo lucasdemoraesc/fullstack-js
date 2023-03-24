@@ -3,14 +3,6 @@ import Board from "../../src/entities/Board";
 import BoardService from "../../src/services/BoardService";
 import BoardViewVue from "../../src/views/BoardView.vue";
 
-function sleep(ms: number) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(true);
-        }, ms);
-    });
-}
-
 test("Deve testar o board view", async () => {
     const BoardService: BoardService = {
         async getBoardById(idBoard: number): Promise<Board> {
