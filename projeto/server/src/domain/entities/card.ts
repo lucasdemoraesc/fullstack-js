@@ -1,6 +1,8 @@
 export class Card {
 
     constructor(
+        readonly idColumn: number,
+        readonly idCard: number,
         readonly title: string,
         readonly estimative: number
     ) {

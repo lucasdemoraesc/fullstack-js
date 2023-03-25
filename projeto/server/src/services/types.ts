@@ -1,18 +1,27 @@
-export type CardOutput = {
-    title: string;
-    estimative: number;
+export type BoardsOutput = {
+    idBoard: number;
+    name: string;
+    description?: string;
 };
 
-export type ColumnOutput = {
-    name: string;
+export type BoardOutput = BoardsOutput & {
     estimative: number;
+    columns: ColumnOutput[];
+};
+
+export type ColumnsOutput = {
+    idColumn: number;
+    name: string;
     hasEstimative: boolean;
+};
+
+export type ColumnOutput = ColumnsOutput & {
+    estimative: number;
     cards: CardOutput[];
 };
 
-export type GetBoardOutput = {
-    name: string,
-    description?: string,
-    estimative: number,
-    columns: ColumnOutput[];
+export type CardOutput = {
+    idCard: number;
+    title: string;
+    estimative: number;
 };

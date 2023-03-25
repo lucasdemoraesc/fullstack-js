@@ -54,7 +54,9 @@ Escopo dessa parte:
 
 ### Extra :asterisk:
 
-- [ ] Adicionar suporte à migrations para o banco de dados.
+- [ ] Adicione suporte à migrations para o banco de dados.
+- [ ] Adicione injeção de dependências Scoped na API.
+  - O modelo atual torna todas as dependências Singleton.
 - [ ] Adicione validação a nível de API e Banco à todas as entradas de dados.
 - [ ] Utilize suas habilidades como dev frontend para melhorar o design da solução implementada no curso;
 - [ ] Refatore os códigos CSS aplicando os conceitos da metodologia [BEM](https://getbem.com/introduction)

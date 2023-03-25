@@ -7,11 +7,12 @@ export class CardRepositoryDatabase implements CardRepository {
     constructor(readonly connection: Connection) { }
 
     async getAllByIdColumn(idColumn: number): Promise<Card[]> {
-        const cardsData = await this.connection.query("select * from fullstackjs.cards where id_column = $1", [idColumn]);
+        const cardsData: any[] = await this.connection.query("select * from fullstackjs.cards where id_column = $1", [idColumn]);
         const cards: Card[] = [];
 
-        for (const columnData of cardsData)
-            cards.push(new Card(columnData.title, columnData.estimative));
+        cardsData.forEach(cardData => {
+            cards.push(new Card(cardData.id_column, cardData.id_card, cardData.title, cardData.estimative));
+        });
 
         return cards;
     }

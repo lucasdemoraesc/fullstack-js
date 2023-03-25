@@ -1,48 +1,45 @@
 import { BoardRepository } from "../domain/repositories/board-repository";
-import { CardRepository } from "../domain/repositories/card-repository";
-import { ColumnRepository } from "../domain/repositories/column-repository";
-import { ColumnOutput, GetBoardOutput } from "./types";
+import { CardService } from "./card-service";
+import { ColumnService } from "./column-service";
+import { BoardOutput, BoardsOutput, ColumnOutput } from "./types";
 
 export class BoardService {
 
     constructor(
         protected readonly boardRepository: BoardRepository,
-        protected readonly columnRepository: ColumnRepository,
-        protected readonly cardRepository: CardRepository,
+        protected readonly columnService: ColumnService,
+        protected readonly cardService: CardService,
     ) {
     }
 
     async getBoards() {
         const boards = await this.boardRepository.getAll();
-        return boards;
+        return boards.map(board => (board as BoardsOutput));
     }
 
-    async getBoard(idBoard: number): Promise<GetBoardOutput> {
+    async getBoard(idBoard: number): Promise<BoardOutput> {
         const board = await this.boardRepository.get(idBoard);
-        const output: GetBoardOutput = {
+        const columns = await this.columnService.getColumns(idBoard);
+
+        const output: BoardOutput = {
+            idBoard: board.idBoard,
             name: board.name,
             description: board.description,
             estimative: 0,
             columns: []
         };
 
-        const columns = await this.columnRepository.getAllByIdBoard(idBoard);
         for (const column of columns) {
+            const cards = await this.cardService.getCards(column.idColumn);
 
             const columnOutput: ColumnOutput = {
-                name: column.name,
-                hasEstimative: column.hasEstimative,
+                ...column,
                 estimative: 0,
-                cards: []
+                cards: cards
             };
 
-            const cards = await this.cardRepository.getAllByIdColumn(column.idColumn);
-
-            for (const card of cards) {
-                if (column.hasEstimative)
-                    columnOutput.estimative += card.estimative;
-                columnOutput.cards.push({ title: card.title, estimative: card.estimative });
-            }
+            if (column.hasEstimative)
+                columnOutput.estimative = cards.reduce((total, card) => total += card.estimative, 0);
 
             output.estimative += columnOutput.estimative;
             output.columns.push(columnOutput);

@@ -3,14 +3,18 @@ import { BoardRepositoryDatabase } from "../../../src/infra/repositories/databas
 import { CardRepositoryDatabase } from "../../../src/infra/repositories/database/card-repository.database";
 import { ColumnRepositoryDatabase } from "../../../src/infra/repositories/database/column-repository.database";
 import { BoardService } from "../../../src/services/board-service";
+import { CardService } from "../../../src/services/card-service";
+import { ColumnService } from "../../../src/services/column-service";
 
 test("Deve retornar os quadros por meio do Serviço", async () => {
     const connection = new PgPromiseConnection();
     const boardRepository = new BoardRepositoryDatabase(connection);
     const columnRepository = new ColumnRepositoryDatabase(connection);
     const cardRepository = new CardRepositoryDatabase(connection);
+    const columnService = new ColumnService(columnRepository);
+    const cardService = new CardService(cardRepository);
 
-    const boardService = new BoardService(boardRepository, columnRepository, cardRepository);
+    const boardService = new BoardService(boardRepository, columnService, cardService);
     const boards = await boardService.getBoards();
     expect(boards).toHaveLength(1);
     const [board] = boards;
@@ -23,8 +27,10 @@ test("Deve retornar um quadro", async () => {
     const boardRepository = new BoardRepositoryDatabase(connection);
     const columnRepository = new ColumnRepositoryDatabase(connection);
     const cardRepository = new CardRepositoryDatabase(connection);
+    const columnService = new ColumnService(columnRepository);
+    const cardService = new CardService(cardRepository);
 
-    const boardService = new BoardService(boardRepository, columnRepository, cardRepository);
+    const boardService = new BoardService(boardRepository, columnService, cardService);
     const board = await boardService.getBoard(1);
     expect(board.name).toBe("Projeto 1");
     expect(board.columns).toHaveLength(3);
