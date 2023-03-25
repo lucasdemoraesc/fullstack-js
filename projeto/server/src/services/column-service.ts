@@ -1,3 +1,4 @@
+import { Column } from "../domain/entities/column";
 import { ColumnRepository } from "../domain/repositories/column-repository";
 import { ColumnsOutput } from "./types";
 
@@ -7,7 +8,14 @@ export class ColumnService {
     }
 
     async getColumns(idBoard: number) {
-        const columns = await this.columnRepository.getAllByIdBoard(idBoard);
-        return columns.map(column => column as ColumnsOutput);
+        const columns: Column[] = await this.columnRepository.getAllByIdBoard(idBoard);
+        return columns.map(column => {
+            const columnOutput = (<ColumnsOutput> {
+                idColumn: column.idColumn,
+                name: column.name,
+                hasEstimative: column.hasEstimative
+            });
+            return columnOutput;
+        });
     }
 }

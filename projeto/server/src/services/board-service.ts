@@ -14,7 +14,15 @@ export class BoardService {
 
     async getBoards() {
         const boards = await this.boardRepository.getAll();
-        return boards.map(board => (board as BoardsOutput));
+
+        return boards.map(board => {
+            const boardOutput = (<BoardsOutput> {
+                idBoard: board.idBoard,
+                name: board.name,
+                description: board.description
+            });
+            return boardOutput;
+        });
     }
 
     async getBoard(idBoard: number): Promise<BoardOutput> {
