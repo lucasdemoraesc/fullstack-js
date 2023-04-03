@@ -54,10 +54,13 @@ Escopo dessa parte:
 
 ### Extra :asterisk:
 
-- [ ] Adicione suporte à migrations para o banco de dados.
-- [ ] Adicione injeção de dependências Scoped na API.
+- [ ] Server: Adicionar suporte à migrations para o banco de dados.
+- [ ] Server: Adicionar injeção de dependências Scoped na API.
   - O modelo atual torna todas as dependências Singleton.
-- [ ] Adicione validação a nível de API e Banco à todas as entradas de dados.
-- [ ] Utilize suas habilidades como dev frontend para melhorar o design da solução implementada no curso;
-- [ ] Refatore os códigos CSS aplicando os conceitos da metodologia [BEM](https://getbem.com/introduction)
-- [ ] Faça deploy da solução implementada;
+- [ ] Server: Adicionar tratamento de exceções para evitar crashs.
+- [ ] Server: Adicionar validação a nível de API e Banco à todas as entradas de dados.
+- [ ] Server: Implementar Fake Repository baseado em JSON para os testes.
+- [ ] Server/Client: Refatorar testes.
+- [ ] Client: Melhorar o design e usabilidade utilizando conceitos de UI/UX.
+- [ ] Client: Refatorar os códigos CSS aplicando os conceitos da metodologia [BEM](https://getbem.com/introduction).
+- [ ] Fazer deploy da solução implementada.
