@@ -14,7 +14,6 @@ export class BoardService {
 
     async getBoards() {
         const boards = await this.boardRepository.getAll();
-
         return boards.map(board => {
             const boardOutput = (<BoardsOutput> {
                 idBoard: board.idBoard,
@@ -38,10 +37,11 @@ export class BoardService {
         };
 
         for (const column of columns) {
-            const cards = await this.cardService.getCards(column.idColumn);
+            const cards = await this.cardService.getCards(column.idColumn!);
 
             const columnOutput: ColumnOutput = {
                 ...column,
+                idColumn: column.idColumn!,
                 estimative: 0,
                 cards: cards
             };

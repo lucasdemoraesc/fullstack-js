@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Card } from "../../src/domain/entities/card";
-import { BoardOutput, BoardsOutput, ColumnOutput } from "../../src/services/types";
+import { Column } from "../../src/domain/entities/column";
+import { BoardOutput, BoardsOutput } from "../../src/services/types";
 
 test("Deve retornar os quadros por meio da API", async () => {
     const response = await axios<BoardsOutput[]>({
@@ -31,7 +32,7 @@ test("Deve retornar um quadro por meio da API", async () => {
 });
 
 test("Deve retornar as colunas de um quadro por meio da API", async function () {
-    const response = await axios<ColumnOutput[]>({
+    const response = await axios<Column[]>({
         url: "http://localhost:3000/boards/1/columns",
         method: "get"
     });
@@ -45,6 +46,40 @@ test("Deve retornar as colunas de um quadro por meio da API", async function () 
     expect(column2.hasEstimative).toBeTruthy();
     expect(column3.name).toBe("Done");
 });
+
+test("Deve salvar uma coluna em um quadro por meio da API", async function () {
+    const columnName = "Teste: Salvar por API";
+    const idBoard = 1;
+    const hasEstimative = true;
+
+    const response = await axios<number>({
+        url: "http://localhost:3000/boards/1/columns",
+        method: "post",
+        data: {
+            name: columnName,
+            hasEstimative: hasEstimative
+        }
+    });
+
+    const idColumn = response.data;
+
+    const responseGet = await axios<Column>({
+        url: `http://localhost:3000/boards/1/columns/${idColumn}`,
+        method: "get",
+    });
+
+    const column = responseGet.data;
+
+    expect(column.name).toBe(columnName);
+    expect(column.idBoard).toBe(idBoard);
+    expect(column.hasEstimative).toBe(hasEstimative);
+
+    await axios({
+        url: `http://localhost:3000/boards/1/columns/${idColumn}`,
+        method: "delete",
+    });
+});
+
 
 test("Deve retornar os cartões de uma coluna por meio da API", async function () {
     const response = await axios<Card[]>({

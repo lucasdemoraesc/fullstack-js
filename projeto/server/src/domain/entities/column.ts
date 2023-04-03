@@ -3,7 +3,7 @@ export class Column {
 
     constructor(
         readonly idBoard: number,
-        readonly idColumn: number,
+        readonly idColumn: number | undefined,
         readonly name: string,
         readonly hasEstimative: boolean = false
     ) {

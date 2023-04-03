@@ -25,3 +25,5 @@ export type CardOutput = {
     title: string;
     estimative: number;
 };
+
+export type ColumnInput = Omit<ColumnsOutput, "idColumn">;

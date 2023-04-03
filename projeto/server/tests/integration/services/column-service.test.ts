@@ -2,6 +2,7 @@ import { PgPromiseConnection } from "../../../src/infra/database/pg-promise-conn
 import { ColumnRepositoryDatabase } from "../../../src/infra/repositories/database/column-repository.database";
 import { ColumnService } from "../../../src/services/column-service";
 
+
 test("Deve retornar as colunas de um quadro por meio do Serviço", async () => {
     const connection = new PgPromiseConnection();
     const columnRepository = new ColumnRepositoryDatabase(connection);
@@ -17,14 +18,17 @@ test("Deve retornar as colunas de um quadro por meio do Serviço", async () => {
     await connection.close();
 });
 
-// test("Deve salvar uma coluna por meio do Serviço", async () => {
-//     const connection = new PgPromiseConnection();
-//     const columnRepository = new ColumnRepositoryDatabase(connection);
-//     const columnService = new ColumnService(columnRepository);
-//     const savedColumn = await columnService.saveColumn(new Column("Todo", true));
-//     const column = await columnService.getColumn(savedColumn.idColumn);
+test("Deve salvar uma coluna por meio do Serviço", async () => {
+    const connection = new PgPromiseConnection();
+    const columnRepository = new ColumnRepositoryDatabase(connection);
+    const columnService = new ColumnService(columnRepository);
+    const idColumn = await columnService.saveColumn(1, { name: "Teste: Salvar por serviço", hasEstimative: true });
+    const column = await columnService.getColumn(idColumn);
 
-//     expect(column.name).toBe("Todo");
+    expect(column.name).toBe("Teste: Salvar por serviço");
+    expect(column.hasEstimative).toBeTruthy();
 
-//     await connection.close();
-// });
+    await columnService.deleteColumn(idColumn);
+
+    await connection.close();
+});
