@@ -1,7 +1,7 @@
 import Board from "../../src/entities/Board";
 
 test("Deve criar um quadro", () => {
-    const board = new Board("Projeto 1", "Projeto para teste 1");
+    const board = new Board(1, "Projeto 1", "Projeto para teste 1");
 
     expect(board.columns).toHaveLength(0);
     expect(board.name).toBe("Projeto 1");
@@ -10,7 +10,7 @@ test("Deve criar um quadro", () => {
 });
 
 test("Deve criar um quadro com 3 colunas", () => {
-    const board = new Board("Projeto 1", "Projeto para teste 1");
+    const board = new Board(1, "Projeto 1", "Projeto para teste 1");
     board.addColumn("Todo", true);
     board.addColumn("Doing", true);
     board.addColumn("Done", false);
@@ -26,7 +26,7 @@ test("Deve criar um quadro com 3 colunas", () => {
 });
 
 test("Deve criar um quadro com 3 colunas e com cartões", () => {
-    const board = new Board("Projeto 1");
+    const board = new Board(1, "Projeto 1");
     board.addColumn("Todo", true);
     board.addColumn("Doing", true);
     board.addColumn("Done", false);
@@ -63,7 +63,7 @@ test("Deve criar um quadro com 3 colunas e com cartões", () => {
 });
 
 test("Deve criar um quadro com uma coluna e um card e aumentar a estimativa", () => {
-    const board = new Board("Projeto 1");
+    const board = new Board(1, "Projeto 1");
     board.addColumn("Todo", true);
     board.addCard("Todo", "Atividade 1", 3);
 

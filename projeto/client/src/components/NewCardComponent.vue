@@ -22,7 +22,8 @@ let cardTitle = ref("");
     <input type="text"
       name="card-title"
       v-model.trim="cardTitle">
-    <button @click="board?.addCard(column.name, cardTitle, 0)">Add card</button>
+    <button id="btn-new-card"
+      @click="board?.addCard(column.name, cardTitle, 0)">Add card</button>
   </div>
 </template>
 

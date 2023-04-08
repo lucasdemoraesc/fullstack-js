@@ -4,9 +4,9 @@ import BoardService from "../../src/services/BoardService";
 import BoardViewVue from "../../src/views/BoardView.vue";
 
 test("Deve testar o board view", async () => {
-    const BoardService: BoardService = {
-        async getBoardById(idBoard: number): Promise<Board> {
-            const board = new Board("Projeto 1");
+    const BoardService: Partial<BoardService> = {
+        async getBoard(idBoard: number): Promise<Board> {
+            const board = new Board(1, "Projeto 1");
             board.addColumn("Todo", true);
             board.addColumn("Doing", true);
             board.addColumn("Done", false);

@@ -8,10 +8,6 @@ export default class Column {
         this.cards = [];
     }
 
-    public addCard(card: Card) {
-        this.cards.push(card);
-    }
-
     public get estimative() {
         return this.cards.reduce((total, card) => total += card.estimative, 0);
     }

@@ -3,7 +3,7 @@ import BoardComponentVue from "../../src/components/BoardComponent.vue";
 import Board from "../../src/entities/Board";
 
 test("Deve testar o board component", async () => {
-    const board = new Board("Projeto 1", "Teste");
+    const board = new Board(1, "Projeto 1", "Teste");
     board.addColumn("Todo", true);
     board.addColumn("Doing", true);
     board.addColumn("Done", false);

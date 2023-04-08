@@ -18,7 +18,8 @@ let columnName = ref("");
     <input type="text"
       name="column-name"
       v-model.trim="columnName">
-    <button @click="board?.addColumn(columnName, true)">Add column</button>
+    <button id="btn-new-column"
+      @click="board?.addColumn(columnName, true)">Add column</button>
   </div>
 </template>
 
