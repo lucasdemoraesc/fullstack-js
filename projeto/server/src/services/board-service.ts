@@ -1,7 +1,8 @@
+import { Board } from "../domain/entities/board";
 import { BoardRepository } from "../domain/repositories/board-repository";
 import { CardService } from "./card-service";
 import { ColumnService } from "./column-service";
-import { BoardOutput, BoardsOutput, ColumnOutput } from "./types";
+import { BoardInput, BoardOutput, BoardsOutput, ColumnOutput } from "./types";
 
 export class BoardService {
 
@@ -29,7 +30,7 @@ export class BoardService {
         const columns = await this.columnService.getColumns(idBoard);
 
         const output: BoardOutput = {
-            idBoard: board.idBoard,
+            idBoard: board.idBoard!,
             name: board.name,
             description: board.description,
             estimative: 0,
@@ -54,5 +55,17 @@ export class BoardService {
         }
 
         return output;
+    }
+
+    async saveBoard(boardData: BoardInput): Promise<number> {
+        return this.boardRepository.save(new Board(undefined, boardData.name, boardData.description));
+    }
+
+    async updateBoard(idBoard: number, boardData: BoardInput): Promise<void> {
+        await this.boardRepository.update(new Board(idBoard, boardData.name, boardData.description));
+    }
+
+    async deleteBoard(idBoard: number): Promise<void> {
+        await this.boardRepository.delete(idBoard);
     }
 }

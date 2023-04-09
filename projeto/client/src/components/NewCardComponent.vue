@@ -29,13 +29,14 @@ let cardTitle = ref("");
 
 <style scoped>
 .card {
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   border: #ddd 1px solid;
   border-radius: 4px;
   transition: filter ease-in-out 400ms;
   padding: 1em;
-  display: flex;
-  gap: 4px;
+  gap: 8px;
 }
 
 .card:hover {

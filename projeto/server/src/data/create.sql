@@ -24,12 +24,12 @@ create table fullstackjs.cards (
     estimative integer
 );
 
-insert into fullstackjs.boards (id_board, name, description) values (1, 'Projeto 1', 'Projeto de testes 1');
+insert into fullstackjs.boards (name, description) values ('Projeto 1', 'Projeto de testes 1');
 
-insert into fullstackjs.columns (id_column, id_board, name, has_estimative) values (1, 1, 'Todo', true);
-insert into fullstackjs.columns (id_column, id_board, name, has_estimative) values (2, 1, 'Doing', true);
-insert into fullstackjs.columns (id_column, id_board, name, has_estimative) values (3, 1, 'Done', false);
+insert into fullstackjs.columns (id_board, name, has_estimative) values (1, 'Todo', true);
+insert into fullstackjs.columns (id_board, name, has_estimative) values (1, 'Doing', true);
+insert into fullstackjs.columns (id_board, name, has_estimative) values (1, 'Done', false);
 
-insert into fullstackjs.cards (id_card, id_column, title, estimative) values (1, 1, 'Estudar NodeJS', 2);
-insert into fullstackjs.cards (id_card, id_column, title, estimative) values (2, 1, 'Estudar Typescript', 2);
-insert into fullstackjs.cards (id_card, id_column, title, estimative) values (3, 1, 'Estudar Vue.js', 2);
+insert into fullstackjs.cards (id_column, title, estimative) values (1, 'Estudar NodeJS', 2);
+insert into fullstackjs.cards (id_column, title, estimative) values (1, 'Estudar Typescript', 2);
+insert into fullstackjs.cards (id_column, title, estimative) values (1, 'Estudar Vue.js', 2);

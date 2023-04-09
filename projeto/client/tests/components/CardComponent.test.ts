@@ -2,7 +2,7 @@ import { mount } from "@vue/test-utils";
 import CardComponentVue from "../../src/components/CardComponent.vue";
 import Board from "../../src/entities/Board";
 
-test("Deve testar o column component", async () => {
+test("Deve testar o card component", async () => {
     const board = new Board(1, "Projeto 1", "Teste");
     board.addColumn("Todo", true);
     board.addColumn("Doing", true);

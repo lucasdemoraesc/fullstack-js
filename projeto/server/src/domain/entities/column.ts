@@ -2,7 +2,7 @@
 export class Column {
 
     constructor(
-        readonly idBoard: number,
+        readonly idBoard: number | undefined,
         readonly idColumn: number | undefined,
         readonly name: string,
         readonly hasEstimative: boolean = false

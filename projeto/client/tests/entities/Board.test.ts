@@ -73,6 +73,6 @@ test("Deve criar um quadro com uma coluna e um card e aumentar a estimativa", ()
 
     board.columns[0].cards[0].increaseEstimative();
     expect(board.columns[0].cards[0].estimative).toBe(4);
-    board.increaseEstimativeOf(board.columns[0].cards[0]);
+    board.increaseEstimativeOf(board.columns[0], board.columns[0].cards[0]);
     expect(board.columns[0].cards[0].estimative).toBe(5);
 });

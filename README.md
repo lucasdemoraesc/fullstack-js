@@ -55,19 +55,16 @@ Escopo dessa parte:
 ### Extra :asterisk:
 
 - [ ] *Server*: Adicionar suporte à migrations para o banco de dados.
-- [ ] *Server*: Adicionar injeção de dependências Scoped na API.
-  - O modelo atual torna todas as dependências Singleton.
 - [ ] *Server*: Adicionar tratamento de exceções para evitar crashs.
 - [ ] *Server*: Adicionar validação a nível de API e Banco à todas as entradas de dados.
 - [ ] *Server*: Implementar Fake Repository baseado em JSON para os testes.
+- [ ] *Server/Client*: Ajustar injeção de dependências.
 - [ ] *Server/Client*: Refatorar testes.
 - [ ] *Server/Client*: Implementar CRUD de usuários.
   - [ ] *Server/Client*: Adicionar autenticação eautorização.
-- [ ] *Client*: Refatorar uso do Axios utilizando inverção de dependência e Adapter.
+- [ ] *Client*: Remover testes de componentes visuais (deixar para implementar só depois da refatoração das telas).
 - [ ] *Client*: Adicionar tratamento de erros.
 - [ ] *Client*: Refatorar os códigos CSS aplicando os conceitos da metodologia [BEM](https://getbem.com/introduction).
 - [ ] *Client*: Melhorar o design e usabilidade utilizando conceitos de UI/UX.
-- [ ] *Client*: Ajustar injeção de dependências.
-  - O sistema de injeção de dependências do Vue é limitado e possibilita apenas a injeção em componentes Vue, não funcionando em serviços por exemplo, desta forma será necessário pensar em uma forma de contornar esta limitação a fim de evitar o uso de dependências Singleton como está ocorrendo atualmente tornando a solução mais escalável.
-  - Possível solução: Implementar uma fábrica para os serviços e utilizar a flag treatDefaultAsFactory da função inject().
 - [ ] Fazer deploy da solução implementada.
+- [ ] *Client:* Adicionar fallback para resiliência ao alterar dados na tela para caso ocorram erros na gravação por parte da API.

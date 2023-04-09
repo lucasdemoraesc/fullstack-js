@@ -19,6 +19,6 @@ const columnService = new ColumnService(columnRepository);
 const cardService = new CardService(cardRepository);
 const boardService = new BoardService(boardRepository, columnService, cardService);
 
-new BoardController(http, connection, boardService, columnService, cardService);
+new BoardController(http, boardService, columnService, cardService);
 
 http.listen(3000);

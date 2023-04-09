@@ -22,26 +22,31 @@ defineProps({
 
 <template>
   <div class="card">
-    <div class="header">
+    <div class="card-header">
       <span class="card-title">{{ card.title }}</span>
       <span class="card-estimative"> ({{ card.estimative }})</span>
     </div>
-    <button class="card-increase-estimative"
-      @click="board.increaseEstimativeOf(card)">+</button>
-    <button class="card-decrease-estimative"
-      @click="board.decreaseEstimativeOf(card)">-</button>
+    <div class="card-actions">
+      <button class="card-increase-estimative"
+        @click="board.increaseEstimativeOf(column, card)">+</button>
+      <button class="card-decrease-estimative"
+        @click="board.decreaseEstimativeOf(column, card)">-</button>
+      <button class="card-delete"
+        @click="board.deleteCard(column, card.idCard!)">delete</button>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .card {
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   border: #ddd 1px solid;
   border-radius: 4px;
-  transition: filter ease-in-out 400ms;
+  transition: filter ease-in-out 300ms;
   padding: 1em;
-  display: flex;
-  gap: 4px;
+  gap: 8px;
 }
 
 .card:hover {

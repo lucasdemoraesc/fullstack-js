@@ -27,3 +27,11 @@ export type CardOutput = {
 };
 
 export type ColumnInput = Omit<ColumnsOutput, "idColumn">;
+export type BoardInput = Omit<BoardsOutput, "idBoard">;
+
+export type CardInput = {
+    idCard: number,
+    idColumn: number,
+    title: string,
+    estimative: number;
+};

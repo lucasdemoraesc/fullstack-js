@@ -19,6 +19,11 @@ export class ColumnService {
         return this.columnRepository.save(new Column(idBoard, undefined, columnInput.name, columnInput.hasEstimative));
     }
 
+    async updateColumn(idColumn: number, columnData: ColumnInput): Promise<void> {
+        const column = new Column(undefined, idColumn, columnData.name, columnData.hasEstimative);
+        await this.columnRepository.update(column);
+    }
+
     async deleteColumn(idColumn: number): Promise<void> {
         await this.columnRepository.delete(idColumn);
     }

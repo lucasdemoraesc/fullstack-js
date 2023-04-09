@@ -2,7 +2,7 @@ export class Card {
 
     constructor(
         readonly idColumn: number,
-        readonly idCard: number,
+        readonly idCard: number | undefined,
         readonly title: string,
         readonly estimative: number
     ) {

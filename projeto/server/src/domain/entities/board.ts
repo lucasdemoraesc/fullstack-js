@@ -1,7 +1,7 @@
 export class Board {
 
     constructor(
-        readonly idBoard: number,
+        readonly idBoard: number | undefined,
         readonly name: string,
         readonly description?: string
     ) {

@@ -31,6 +31,10 @@ export class ColumnRepositoryDatabase implements ColumnRepository {
         return columnData.id_column;
     }
 
+    async update(column: Column): Promise<void> {
+        await this.connection.query("update fullstackjs.columns set name = $1, has_estimative = $2 where id_column = $3", [column.name, column.hasEstimative, column.idColumn]);
+    }
+
     async delete(idColumn: number): Promise<void> {
         await this.connection.query("delete from fullstackjs.columns where id_column = $1", [idColumn]);
     }
